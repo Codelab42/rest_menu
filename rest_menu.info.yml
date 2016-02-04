@@ -1,0 +1,8 @@
+name: REST menu
+type: module
+description: Provides Drupal menu structures as REST resources.
+core: 8.x
+package: Web services
+dependencies:
+  - rest
+  - menu_ui
