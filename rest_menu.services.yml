@@ -1,0 +1,9 @@
+services:
+  serializer.normalizer.menulink:
+    class: Drupal\rest_menu\Normalizer\MenuLinkNormalizer
+    tags:
+      - { name: normalizer }
+  serializer.normalizer.menulinktree:
+    class: Drupal\rest_menu\Normalizer\MenuLinkTreeElementNormalizer
+    tags:
+      - { name: normalizer }

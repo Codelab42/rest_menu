@@ -31,7 +31,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class MenuStructureResource extends ResourceBase {
 
   /**
-   *  A instance of entity manager.
+   * An instance of entity manager.
    *
    * @var \Drupal\Core\Entity\EntityManagerInterface
    */
@@ -94,17 +94,17 @@ class MenuStructureResource extends ResourceBase {
    * @return \Drupal\rest\ResourceResponse
    *   The response containing the log entry.
    *
-   *
+   * @TODO: make $menu parameter a type-hinted MenuInterface parameter
+   * @TODO: cacheability and access checks for menu links?
+   * @TODO: optional whitelist to only allow menu links from defined providers.
    */
   public function get($menu_name) {
-    // @TODO: make $menu parameter a type-hinted MenuInterface parameter
     $menu = Menu::load($menu_name);
     if ($menu) {
       $tree = $this->menuTree->load($menu->id(), new MenuTreeParameters());
-      // Get proper info from tree and return it.
-      $record = [];
-      return new ResourceResponse($record);
+      return new ResourceResponse($tree);
     }
     throw new HttpException(t('No valid menu ID was provided.'));
   }
+
 }
