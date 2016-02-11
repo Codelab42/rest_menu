@@ -30,6 +30,7 @@ class MenuLinkTreeElementNormalizer extends NormalizerBase {
       'children' => $this->serializer->normalize($object->subtree, $format, $context),
       'depth' => $object->depth,
       'in_active_trail' => $object->inActiveTrail,
+      'id' => $object->link->getPluginId(),
     ];
   }
 
