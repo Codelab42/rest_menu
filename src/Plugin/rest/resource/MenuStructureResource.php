@@ -102,7 +102,8 @@ class MenuStructureResource extends ResourceBase {
     $menu = Menu::load($menu_name);
     if ($menu) {
       $tree = $this->menuTree->load($menu->id(), new MenuTreeParameters());
-      return new ResourceResponse($tree);
+      $result = array_values($tree);
+      return new ResourceResponse($result);
     }
     throw new HttpException(t('No valid menu ID was provided.'));
   }
